@@ -18,13 +18,7 @@ _Uma lista de livros orientada a objeto_
 	*   Uma referência ao livro que está sendo lido no momento (book object) `currentBook`
 	*   Uma referência ao último livro que foi lido (book object) `lastBookRead`
 	*   Uma array com todos os livros (Books) `allBooks`
-*   Cada **Book** possui as seguintes propriedades:
-	*   Título `title`
-	*   Gênero `genre`
-	*   Autor `author`
-	*   Livro lido `read` (true or false)
-	*   Data de leitura `readDate`, em branco para livros não lidos, e com data de leitura para livros lidos
-*   Toda **Booklist** possui os seguintes métodos:
+*   Cada **Booklist** possui os seguintes métodos:
     * .countBooks() _- privado_
       * Conta quantidade de livros lidos e não lidos
   	* .defineNextBook() _- privado_
@@ -42,6 +36,15 @@ _Uma lista de livros orientada a objeto_
   	* .finishCurrentBook()
     	* Marca o `currentBook` como lido e atualiza sua data de leitura `readDate`
     	* Remaneja os livros `lastBookRead`, `currentBook` e `nextBook` chamando o método `.rearrangeBooks()`
+*   Cada **Book** possui as seguintes propriedades:
+	*   Título `title`
+	*   Gênero `genre`
+	*   Autor `author`
+	*   Livro lido `read` (true or false)
+	*   Data de leitura `readDate`, em branco para livros não lidos, e com data de leitura para livros lidos
+*   Cada **Book** possui o seguinte método:
+    * .setDate(date)
+      * Verifica se foi inserida uma data de leitura `readDate` e, caso necessário, atualiza com a data atual
 
 ### Usando a aplicação
 
