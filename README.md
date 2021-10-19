@@ -29,14 +29,14 @@ _Uma lista de livros orientada a objeto_
       * Conta quantidade de livros lidos e não lidos
   	* .defineNextBook() _- privado_
     	* Determina qual será o próximo a ser lido
-  	* .checkIfBookRepeats(book) _- privado_
-    	* Verifica se o livro **book** já existe na lista de livros
   	* handleReadBooks(book) _- privado_
     	* Verifica se livro já foi lido e data de leitura e, caso necessário, atualiza o último livro que foi lido
   	* .defineCurrentBook(book) _- privado_
     	* Atualiza livro que está sendo lido no momento
   	* .rearrangeBooks() _- privado_
     	* Remaneja os livros após finalização de um `currentBook`
+  	* .validateBook(book) _- privado_
+    	* Verifica se o livro **book** cumpre os requisitos para ser inserido na lista de livros
   	* .addBook(book)
     	* Adiciona o **book** na BookList
   	* .finishCurrentBook()
@@ -44,3 +44,17 @@ _Uma lista de livros orientada a objeto_
     	* Remaneja os livros `lastBookRead`, `currentBook` e `nextBook` chamando o método `.rearrangeBooks()`
 
 ### Usando a aplicação
+
+* Criar pelos menos uma lista de livros
+  * `let myBookList = new BookList()`
+* Criar alguns livros, lidos ou não lidos (a data de leitura deve ser inserida no formato 'month, day, year')
+  * `let harryPotter = new Book('Harry Potter', 'fantasy', 'J. K. Rowling', false)`
+  * `let lordOfTheRings = new Book('The Lord of the Rings', 'fantasy', 'J. R. R. Tolkien', false)`
+  * `let prideAndPrejudice = new Book('Pride and Prejudice', 'romantic novel', 'Jane Austen', false)`
+  * `let dracula = new Book('Dracula', 'horror novel', 'Bram Stoker', true, 'october, 15, 2021')`
+  * `let dune = new Book('Dune', 'Sci-Fi', 'Frank Herbert', true, 'january, 30, 2010')`
+  * `let cleanCode = new Book('Clean Code', 'technology', 'Robert C. Martin', true)`
+* Adicionar livros à lista
+  * `myBookList.addBook(book)`
+* Finalizar o livro que está sendo lido
+  *  `myBookList.finishCurrentBook()`
