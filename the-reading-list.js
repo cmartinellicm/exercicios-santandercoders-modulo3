@@ -56,14 +56,21 @@ class BookList {
         this.#countBooks();
     }
 
-    addBook(book) {
-        // Verificação se livro já existe na lista (por titulo)
-        if (this.allBooks.some((existingBook) => existingBook.title === book.title)) {
-            console.log('Livro já existe na lista!');
+    #validateBook(book) {
+        // Verificação se livro é um objeto e se já existe na lista (por titulo)
+        if (typeof book === 'object' && !this.allBooks.some((existingBook) => existingBook.title === book.title)) {
+            return true;
         } else {
+            throw new Error(
+                'Opa! O livro que você tentou adicionar não possui as características adequadas ou já foi adicionado'
+            );
+        }
+    }
+
+    addBook(book) {
+        if (this.#validateBook(book)) {
             this.allBooks = [...this.allBooks, book];
             console.log(`O livro ${book.title} foi adicionado com sucesso!`);
-
             this.#defineCurrentBook(book);
             this.#rearrangeBooks();
             this.#handleReadBooks(book);
@@ -90,6 +97,7 @@ class Book {
             (this.read = read),
             (this.readDate = this.read ? this.setDate(readDate) : 'Não finalizado');
     }
+
     setDate(date) {
         if (date === undefined) {
             console.log('Você não colocou uma data, então colocamos uma para você!');
