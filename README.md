@@ -2,6 +2,8 @@
 
 Atividade proposta no curso Santander Coders | Web Full-Stack Degree realizado na [Let's Code](https://www.letscode.com.br/). Exercício de fixação em JavaScript referente a Programação Orientada a Objeto.
 
+Atividade realizada por: [Cássia Martinelli](https://github.com/cmartinellicm), [João Paulo](https://github.com/joaopmelosantos), [Leonardo Lins](https://github.com/LinsLeonardo) e [Rafael Oliveira](https://github.com/Rafess)
+
 ## The Reading List
 
 _Uma lista de livros orientada a objeto_
