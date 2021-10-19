@@ -13,7 +13,6 @@ class BookList {
             return book.read === true ? acc + 1 : acc;
         }, 0);
         this.amountOfUnreadBooks = this.allBooks.length - this.amountOfReadBooks;
-
         console.log(
             `Há ${this.amountOfReadBooks} livro(s) lidos e ${this.amountOfUnreadBooks} livro(s) não lidos na lista`
         );
@@ -23,14 +22,18 @@ class BookList {
         const unreadBooks = this.allBooks.filter((book) => !book.read);
         this.nextBook = unreadBooks.length > 1 ? unreadBooks[1] : null;
 
+        this.currentBook === null
+            ? console.log('Não há livro sendo lido atualmente')
+            : console.log(`${this.currentBook.title} é o livro atual`);
         this.nextBook === null
             ? console.log('Não há um próximo livro a ser lido')
             : console.log(`${this.nextBook.title} é o próximo livro da fila`);
     }
 
     #handleReadBooks(book) {
-        // Verificação se livro adicionado deve ser o lastBookRead
+        // Verificação se livro inserido já foi lido e se livro já existe na lista (por titulo)
         if (book.read) {
+            // Verificação se livro adicionado deve ser o lastBookRead
             if (this.lastBookRead === null || book.readDate > this.lastBookRead.readDate) {
                 this.lastBookRead = book;
             }
@@ -38,16 +41,9 @@ class BookList {
     }
 
     #defineCurrentBook(book) {
-        if (book === null && this.currentBook !== null) {
-            this.currentBook.read = true;
-            this.currentBook.readDate = new Date();
-        } else if (!book.read) {
+        if (this.currentBook === null && !book.read) {
             this.currentBook = book;
         }
-
-        this.currentBook === null
-            ? console.log('Não há livro sendo lido atualmente')
-            : console.log(`${this.currentBook.title} é o livro atual`);
     }
 
     #rearrangeBooks() {
@@ -75,12 +71,13 @@ class BookList {
     }
 
     finishCurrentBook() {
-        if (this.currentBook === null) {
-            console.log('Não há livro sendo lido no momento!');
-        } else {
-            this.#defineCurrentBook(null);
+        if (this.currentBook !== null) {
+            this.currentBook.read = true;
+            this.currentBook.readDate = new Date();
             console.log(`${this.currentBook.title} finalizado com sucesso`);
             this.#rearrangeBooks();
+        } else {
+            console.log('Não há livro sendo lido no momento!');
         }
     }
 }
